@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<meta charset="utf-8">
+<title>plugin</title>
+
+
+<style type="text/css">
+body {
+  font-family: Helvetica, arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background-color: white;
+  padding: 30px; }
+
+body > *:first-child {
+  margin-top: 0 !important; }
+body > *:last-child {
+  margin-bottom: 0 !important; }
+
+a {
+  color: #4183C4; }
+a.absent {
+  color: #cc0000; }
+a.anchor {
+  display: block;
+  padding-left: 30px;
+  margin-left: -30px;
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0; }
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 20px 0 10px;
+  padding: 0;
+  font-weight: bold;
+  -webkit-font-smoothing: antialiased;
+  cursor: text;
+  position: relative; }
+
+h1:hover a.anchor, h2:hover a.anchor, h3:hover a.anchor, h4:hover a.anchor, h5:hover a.anchor, h6:hover a.anchor {
+  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA09pVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoMTMuMCAyMDEyMDMwNS5tLjQxNSAyMDEyLzAzLzA1OjIxOjAwOjAwKSAgKE1hY2ludG9zaCkiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6OUM2NjlDQjI4ODBGMTFFMTg1ODlEODNERDJBRjUwQTQiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6OUM2NjlDQjM4ODBGMTFFMTg1ODlEODNERDJBRjUwQTQiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo5QzY2OUNCMDg4MEYxMUUxODU4OUQ4M0REMkFGNTBBNCIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo5QzY2OUNCMTg4MEYxMUUxODU4OUQ4M0REMkFGNTBBNCIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PsQhXeAAAABfSURBVHjaYvz//z8DJYCRUgMYQAbAMBQIAvEqkBQWXI6sHqwHiwG70TTBxGaiWwjCTGgOUgJiF1J8wMRAIUA34B4Q76HUBelAfJYSA0CuMIEaRP8wGIkGMA54bgQIMACAmkXJi0hKJQAAAABJRU5ErkJggg==) no-repeat 10px center;
+  text-decoration: none; }
+
+h1 tt, h1 code {
+  font-size: inherit; }
+
+h2 tt, h2 code {
+  font-size: inherit; }
+
+h3 tt, h3 code {
+  font-size: inherit; }
+
+h4 tt, h4 code {
+  font-size: inherit; }
+
+h5 tt, h5 code {
+  font-size: inherit; }
+
+h6 tt, h6 code {
+  font-size: inherit; }
+
+h1 {
+  font-size: 28px;
+  color: black; }
+
+h2 {
+  font-size: 24px;
+  border-bottom: 1px solid #cccccc;
+  color: black; }
+
+h3 {
+  font-size: 18px; }
+
+h4 {
+  font-size: 16px; }
+
+h5 {
+  font-size: 14px; }
+
+h6 {
+  color: #777777;
+  font-size: 14px; }
+
+p, blockquote, ul, ol, dl, li, table, pre {
+  margin: 15px 0; }
+
+hr {
+  background: transparent url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAYAAAAECAYAAACtBE5DAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNSBNYWNpbnRvc2giIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6OENDRjNBN0E2NTZBMTFFMEI3QjRBODM4NzJDMjlGNDgiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6OENDRjNBN0I2NTZBMTFFMEI3QjRBODM4NzJDMjlGNDgiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo4Q0NGM0E3ODY1NkExMUUwQjdCNEE4Mzg3MkMyOUY0OCIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo4Q0NGM0E3OTY1NkExMUUwQjdCNEE4Mzg3MkMyOUY0OCIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PqqezsUAAAAfSURBVHjaYmRABcYwBiM2QSA4y4hNEKYDQxAEAAIMAHNGAzhkPOlYAAAAAElFTkSuQmCC) repeat-x 0 0;
+  border: 0 none;
+  color: #cccccc;
+  height: 4px;
+  padding: 0;
+}
+
+body > h2:first-child {
+  margin-top: 0;
+  padding-top: 0; }
+body > h1:first-child {
+  margin-top: 0;
+  padding-top: 0; }
+  body > h1:first-child + h2 {
+    margin-top: 0;
+    padding-top: 0; }
+body > h3:first-child, body > h4:first-child, body > h5:first-child, body > h6:first-child {
+  margin-top: 0;
+  padding-top: 0; }
+
+a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
+  margin-top: 0;
+  padding-top: 0; }
+
+h1 p, h2 p, h3 p, h4 p, h5 p, h6 p {
+  margin-top: 0; }
+
+li p.first {
+  display: inline-block; }
+li {
+  margin: 0; }
+ul, ol {
+  padding-left: 30px; }
+
+ul :first-child, ol :first-child {
+  margin-top: 0; }
+
+dl {
+  padding: 0; }
+  dl dt {
+    font-size: 14px;
+    font-weight: bold;
+    font-style: italic;
+    padding: 0;
+    margin: 15px 0 5px; }
+    dl dt:first-child {
+      padding: 0; }
+    dl dt > :first-child {
+      margin-top: 0; }
+    dl dt > :last-child {
+      margin-bottom: 0; }
+  dl dd {
+    margin: 0 0 15px;
+    padding: 0 15px; }
+    dl dd > :first-child {
+      margin-top: 0; }
+    dl dd > :last-child {
+      margin-bottom: 0; }
+
+blockquote {
+  border-left: 4px solid #dddddd;
+  padding: 0 15px;
+  color: #777777; }
+  blockquote > :first-child {
+    margin-top: 0; }
+  blockquote > :last-child {
+    margin-bottom: 0; }
+
+table {
+  padding: 0;border-collapse: collapse; }
+  table tr {
+    border-top: 1px solid #cccccc;
+    background-color: white;
+    margin: 0;
+    padding: 0; }
+    table tr:nth-child(2n) {
+      background-color: #f8f8f8; }
+    table tr th {
+      font-weight: bold;
+      border: 1px solid #cccccc;
+      margin: 0;
+      padding: 6px 13px; }
+    table tr td {
+      border: 1px solid #cccccc;
+      margin: 0;
+      padding: 6px 13px; }
+    table tr th :first-child, table tr td :first-child {
+      margin-top: 0; }
+    table tr th :last-child, table tr td :last-child {
+      margin-bottom: 0; }
+
+img {
+  max-width: 100%; }
+
+span.frame {
+  display: block;
+  overflow: hidden; }
+  span.frame > span {
+    border: 1px solid #dddddd;
+    display: block;
+    float: left;
+    overflow: hidden;
+    margin: 13px 0 0;
+    padding: 7px;
+    width: auto; }
+  span.frame span img {
+    display: block;
+    float: left; }
+  span.frame span span {
+    clear: both;
+    color: #333333;
+    display: block;
+    padding: 5px 0 0; }
+span.align-center {
+  display: block;
+  overflow: hidden;
+  clear: both; }
+  span.align-center > span {
+    display: block;
+    overflow: hidden;
+    margin: 13px auto 0;
+    text-align: center; }
+  span.align-center span img {
+    margin: 0 auto;
+    text-align: center; }
+span.align-right {
+  display: block;
+  overflow: hidden;
+  clear: both; }
+  span.align-right > span {
+    display: block;
+    overflow: hidden;
+    margin: 13px 0 0;
+    text-align: right; }
+  span.align-right span img {
+    margin: 0;
+    text-align: right; }
+span.float-left {
+  display: block;
+  margin-right: 13px;
+  overflow: hidden;
+  float: left; }
+  span.float-left span {
+    margin: 13px 0 0; }
+span.float-right {
+  display: block;
+  margin-left: 13px;
+  overflow: hidden;
+  float: right; }
+  span.float-right > span {
+    display: block;
+    overflow: hidden;
+    margin: 13px auto 0;
+    text-align: right; }
+
+code, tt {
+  margin: 0 2px;
+  padding: 0 5px;
+  white-space: nowrap;
+  border: 1px solid #eaeaea;
+  background-color: #f8f8f8;
+  border-radius: 3px; }
+
+pre code {
+  margin: 0;
+  padding: 0;
+  white-space: pre;
+  border: none;
+  background: transparent; }
+
+.highlight pre {
+  background-color: #f8f8f8;
+  border: 1px solid #cccccc;
+  font-size: 13px;
+  line-height: 19px;
+  overflow: auto;
+  padding: 6px 10px;
+  border-radius: 3px; }
+
+pre {
+  background-color: #f8f8f8;
+  border: 1px solid #cccccc;
+  font-size: 13px;
+  line-height: 19px;
+  overflow: auto;
+  padding: 6px 10px;
+  border-radius: 3px; }
+  pre code, pre tt {
+    background-color: transparent;
+    border: none; }
+
+sup {
+    font-size: 0.83em;
+    vertical-align: super;
+    line-height: 0;
+}
+* {
+	-webkit-print-color-adjust: exact;
+}
+@media screen and (min-width: 914px) {
+    body {
+        width: 854px;
+        margin:0 auto;
+    }
+}
+@media print {
+	table, pre {
+		page-break-inside: avoid;
+	}
+	pre {
+		word-wrap: break-word;
+	}
+}
+</style>
+
+
+</head>
+
+<body>
+
+<h3 id="toc_0">plugin</h3>
+
+<p>先把<a href="https://www.webpackjs.com/concepts/">中文</a> 或<a href="https://webpack.js.org/contribute/writing-a-plugin/">英文</a>文档看一下。</p>
+
+<h3 id="toc_1">实际应用</h3>
+
+<p>如下方代码</p>
+
+<div><pre><code class="language-none">const ProgressBarPlugin = require(&#39;progress-bar-webpack-plugin&#39;);
+module.exports = {
+    mode: &#39;development&#39;,
+    plugins:[
+        new ProgressBarPlugin({
+            width: 5,
+        }),
+    ],  
+};</code></pre></div>
+
+<h3 id="toc_2">什么是webpack 插件</h3>
+
+<p>webpack plugin是一个具有 apply 属性的 JavaScript 对象。apply 属性会被 webpack compiler 调用，并且 compiler 对象可在整个编译生命周期访问。</p>
+
+<ul>
+<li>webpack 插件机制是整个 webpack 工具的骨架，而 webpack 本身也是利用这套插件机制构建出来的。</li>
+</ul>
+
+<p>一个简单的插件结构如下：</p>
+
+<div><pre><code class="language-none">const pluginName = &#39;ConsoleLogOnBuildWebpackPlugin&#39;;
+
+class ConsoleLogOnBuildWebpackPlugin {
+    apply(compiler) {
+        compiler.hooks.run.tap(pluginName, compilation =&gt; {
+            console.log(&quot;webpack 构建过程开始！&quot;);
+        });
+    }
+}</code></pre></div>
+
+<p>再看一个</p>
+
+<div><pre><code class="language-none">function HelloCompilationPlugin(options) {}
+
+HelloCompilationPlugin.prototype.apply = function(compiler) {
+
+  // 设置回调来访问 compilation 对象：
+  compiler.plugin(&quot;compilation&quot;, function(compilation) {
+
+    // 现在，设置回调来访问 compilation 中的步骤：
+    compilation.plugin(&quot;optimize&quot;, function() {
+      console.log(&quot;Assets are being optimized.&quot;);
+    });
+  });
+};
+
+module.exports = HelloCompilationPlugin;</code></pre></div>
+
+<p>有什么特点呢？ </p>
+
+<p>我们看到了都有个Compiler 和 Compilation</p>
+
+<h3 id="toc_3">不得不说的 Compiler 和 Compilation</h3>
+
+<p>在插件开发中最重要的两个资源就是 compiler 和 compilation 对象。</p>
+
+<h4 id="toc_4">区别与联系</h4>
+
+<p>compiler 对象代表了完整的 webpack 环境配置。这个对象在启动 webpack 时被一次性建立，并配置好所有可操作的设置，包括 options，loader 和 plugin。当在 webpack 环境中应用一个插件时，插件将收到此 compiler 对象的引用。可以使用它来访问 webpack 的主环境。</p>
+
+<p>而compilation 对象代表了一次资源版本构建。当运行 webpack 开发环境中间件时，每当检测到一个文件变化，就会创建一个新的 compilation，从而生成一组新的编译资源。一个 compilation 对象表现了当前的模块资源、编译生成资源、变化的文件、以及被跟踪依赖的状态信息。compilation 对象也提供了很多关键时机的回调，以供插件做自定义处理时选择使用。</p>
+
+<ul>
+<li>这两个组件是任何 webpack 插件不可或缺的部分（特别是 compilation）</li>
+</ul>
+
+<p>看看他们的代码会有很多收获  </p>
+
+<p><a href="https://github.com/webpack/webpack/blob/master/lib/Compilation.js">Compilation</a></p>
+
+<p><a href="https://github.com/webpack/webpack/blob/master/lib/Compiler.js">Compiler</a></p>
+
+<h4 id="toc_5">Compiler</h4>
+
+<p>Compiler暴露了和webpack整个生命周期相关的钩子，通过如下的方式访问:</p>
+
+<div><pre><code class="language-none">//基本写法
+compiler.hooks.someHook.tap(...)
+//如果希望在entry配置完毕后执行某个功能
+compiler.hooks.entryOption.tap(...)
+//如果希望在生成的资源输出到output指定目录之前执行某个功能
+compiler.hooks.emit.tap(...)</code></pre></div>
+
+<ul>
+<li>webpack中有complier对象，代表webpack实例。有编译的具体参数。</li>
+<li>complation代表本次编译，有打包的文件等信息</li>
+</ul>
+
+<h4 id="toc_6">complication</h4>
+
+<p><a href="https://www.webpackjs.com/api/compilation-hooks/">对应钩子</a></p>
+
+<p>buildModule -- 在模块构建开始之前触发</p>
+
+<p>failedModule -- 模块构建失败时执行</p>
+
+<p>seal -- 编译(compilation)停止接收新模块时触发。</p>
+
+<p>optimize -- 优化阶段开始时触发。</p>
+
+<p>...</p>
+
+<h3 id="toc_7">Tapable</h3>
+
+<p>说到 compiler 和 compilation 对象更不得不提 Tapable</p>
+
+<p>tapable是webpack的核心框架，是一个基于事件流的框架，或者叫做发布订阅模式，或观察者模式。webpack 中许多对象扩展自 Tapable 类。</p>
+
+<p>tapable 这个类暴露 tap, tapAsync 和 tapPromise 方法，可以使用这些方法，注入自定义的构建步骤，这些步骤将在整个编译过程中不同时机触发。</p>
+
+<p><a href="">先看下看另一篇</a></p>
+
+<h3 id="toc_8">插件类型(plugin types)</h3>
+
+<p>根据所使用的 钩子(hook) 和 tap 方法，插件可以以多种不同的方式运行。这个工作方式与 Tapable 提供的 hooks 密切相关。compiler hooks 分别记录了 Tapable 内在的钩子，指出哪些 tap 方法可用。</p>
+
+<p>因此，根据你触发到 tap 事件，插件可能会以不同的方式运行。例如，当钩入 compile 阶段时，只能使用同步的 tap 方法：</p>
+
+<div><pre><code class="language-none">compiler.hooks.compile.tap(&#39;MyPlugin&#39;, params =&gt; {
+  console.log(&#39;以同步方式触及 compile 钩子。&#39;)
+})</code></pre></div>
+
+<p>然而，对于能够使用了 AsyncHook(异步钩子) 的 run，我们可以使用 tapAsync 或 tapPromise（以及 tap）：</p>
+
+<div><pre><code class="language-none">compiler.hooks.run.tapAsync(&#39;MyPlugin&#39;, (compiler, callback) =&gt; {
+  console.log(&#39;以异步方式触及 run 钩子。&#39;)
+  callback()
+})
+
+compiler.hooks.run.tapPromise(&#39;MyPlugin&#39;, compiler =&gt; {
+  return new Promise(resolve =&gt; setTimeout(resolve, 1000)).then(() =&gt; {
+    console.log(&#39;以具有延迟的异步方式触及 run 钩子&#39;)
+  })
+})</code></pre></div>
+
+<ul>
+<li>可以有多种方式将 hook 钩入到 compiler 中，可以让各种插件都以合适的方式去运行。</li>
+</ul>
+
+<div><pre><code class="language-none">class Compiler extends Tapable {
+    constructor(context) {
+        super();
+        this.hooks = {
+            /** @type {SyncBailHook&lt;Compilation&gt;} */
+            shouldEmit: new SyncBailHook([&quot;compilation&quot;]),
+            /** @type {AsyncSeriesHook&lt;Stats&gt;} */
+            done: new AsyncSeriesHook([&quot;stats&quot;]),
+            /** @type {AsyncSeriesHook&lt;&gt;} */
+            additionalPass: new AsyncSeriesHook([]),
+            /** @type {AsyncSeriesHook&lt;Compiler&gt;} */
+            beforeRun: new AsyncSeriesHook([&quot;compiler&quot;]),
+            /** @type {AsyncSeriesHook&lt;Compiler&gt;} */
+            run: new AsyncSeriesHook([&quot;compiler&quot;]),
+            /** @type {AsyncSeriesHook&lt;Compilation&gt;} */
+            emit: new AsyncSeriesHook([&quot;compilation&quot;]),
+            /** @type {AsyncSeriesHook&lt;Compilation&gt;} */
+            afterEmit: new AsyncSeriesHook([&quot;compilation&quot;]),</code></pre></div>
+
+<h4 id="toc_9">自定义的钩子函数(custom hooks)</h4>
+
+<p>为了给其他插件的编译添加一个新的钩子，来 tap(触及) 到这些插件的内部，直接从 tapable 中 require 所需的钩子类(hook class)，然后创建：</p>
+
+<div><pre><code class="language-none">const SyncHook = require(&#39;tapable&#39;).SyncHook;
+
+// 具有 `apply` 方法……
+if (compiler.hooks.myCustomHook) throw new Error(&#39;Already in use&#39;);
+compiler.hooks.myCustomHook = new SyncHook([&#39;a&#39;, &#39;b&#39;, &#39;c&#39;])
+
+// 在你想要触发钩子的位置/时机下调用……
+compiler.hooks.myCustomHook.call(a, b, c);</code></pre></div>
+
+<h3 id="toc_10">如何写一个plugin？</h3>
+
+<p>看完上面了解了一些基本内容，以及plugin的样子。怎么写一定要知道怎么样的一个东西可以称之为 webpack plugin呢？</p>
+
+<p>一个完整的 webpack 插件需要满足以下几点规则和特征：</p>
+
+<ul>
+<li>是一个独立的模块。</li>
+<li>模块对外暴露一个 js 函数。</li>
+<li>函数的原型 (prototype) 上定义了一个注入 compiler 对象的 apply 方法。</li>
+<li>apply 函数中需要有通过 compiler 对象挂载的 webpack 事件钩子，钩子的回调中能拿到当前编译的 compilation 对象，如果是异步编译插件的话可以拿到回调 callback。</li>
+<li>完成自定义子编译流程并处理 complition 对象的内部数据。</li>
+<li>如果异步编译插件的话，数据处理完成后执行 callback 回调。</li>
+</ul>
+
+<h3 id="toc_11">两个plugin例子</h3>
+
+<p>（1）在每个chunk 中添加 个banner</p>
+
+<div><pre><code class="language-none">const { ConcatSource } = require(&quot;webpack-sources&quot;);
+let pluginOptions = {
+    name: &#39;myName&#39;,
+    stage: Infinity
+}
+
+class BannerPlugin {
+  constructor(doneF, failF) {
+    this.doneF = doneF;
+    this.failF = failF;
+  }
+  
+  apply(compiler) {
+      compiler.hooks.compilation.tap(&quot;BannerTest&quot;, compilation =&gt; {
+    compilation.hooks.optimizeChunkAssets.tap(&quot;BannerTest&quot;, (chunks, callbak)  =&gt; {
+      chunks.forEach(chunk =&gt; {
+                  chunk.files.forEach(file =&gt; {
+                      compilation.assets[file] = new ConcatSource(
+                      &#39;\/**i am the banner-  &#39; + new Date() + &#39;-**\/&#39;,
+                      &#39;\n&#39;,
+                      compilation.assets[file]
+                      );
+                  });
+              });
+    });
+  });   
+  }
+}
+
+module.exports = BannerPlugin;</code></pre></div>
+
+<p>（2）编译成功和失败回调</p>
+
+<div><pre><code class="language-none">const { ConcatSource } = require(&quot;webpack-sources&quot;);
+let pluginOptions = {
+    name: &#39;myName&#39;,
+    stage: Infinity
+}
+
+class ResultPlugin {
+  constructor(doneF, failF) {
+    this.doneF = doneF;
+    this.failF = failF;
+  }
+  
+  apply(compiler) {
+      compiler.hooks.done.tap(pluginOptions,  (stats) =&gt; {
+          this.doneF(&#39;我成功了&#39;);
+      });
+
+      compiler.hooks.failed.tap(pluginOptions,   (err) =&gt; {
+          this.failF(err);
+      });
+
+      compiler.hooks.compilation.tap(&quot;BannerTest&quot;, compilation =&gt; {
+    compilation.hooks.optimizeChunkAssets.tap(&quot;BannerTest&quot;, (chunks, callbak)  =&gt; {
+      chunks.forEach(chunk =&gt; {
+                  chunk.files.forEach(file =&gt; {
+                      compilation.assets[file] = new ConcatSource(
+                      &#39;\/**Sweet Banner**\/&#39;,
+                      &#39;\n&#39;,
+                      compilation.assets[file]
+                      );
+                  });
+              });
+    });
+  }); 
+  }
+}
+
+module.exports = ResultPlugin;</code></pre></div>
+
+<ul>
+<li>compiler hook 的 tap 方法的第一个参数，应该是驼峰式命名的插件名称。建议为此使用一个常量，以便它可以在所有 hook 中复用。</li>
+</ul>
+
+<h3 id="toc_12">总结</h3>
+
+<p>webpack plugin的本质，它实际上和webpack loader一样简单，其实它只是一个带有apply方法的class。</p>
+
+<p>插件目的在于解决 loader 无法实现的其他事。</p>
+
+
+
+
+</body>
+
+</html>

@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<meta charset="utf-8">
+<title>tapable</title>
+
+
+<style type="text/css">
+body {
+  font-family: Helvetica, arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background-color: white;
+  padding: 30px; }
+
+body > *:first-child {
+  margin-top: 0 !important; }
+body > *:last-child {
+  margin-bottom: 0 !important; }
+
+a {
+  color: #4183C4; }
+a.absent {
+  color: #cc0000; }
+a.anchor {
+  display: block;
+  padding-left: 30px;
+  margin-left: -30px;
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0; }
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 20px 0 10px;
+  padding: 0;
+  font-weight: bold;
+  -webkit-font-smoothing: antialiased;
+  cursor: text;
+  position: relative; }
+
+h1:hover a.anchor, h2:hover a.anchor, h3:hover a.anchor, h4:hover a.anchor, h5:hover a.anchor, h6:hover a.anchor {
+  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA09pVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoMTMuMCAyMDEyMDMwNS5tLjQxNSAyMDEyLzAzLzA1OjIxOjAwOjAwKSAgKE1hY2ludG9zaCkiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6OUM2NjlDQjI4ODBGMTFFMTg1ODlEODNERDJBRjUwQTQiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6OUM2NjlDQjM4ODBGMTFFMTg1ODlEODNERDJBRjUwQTQiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo5QzY2OUNCMDg4MEYxMUUxODU4OUQ4M0REMkFGNTBBNCIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo5QzY2OUNCMTg4MEYxMUUxODU4OUQ4M0REMkFGNTBBNCIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PsQhXeAAAABfSURBVHjaYvz//z8DJYCRUgMYQAbAMBQIAvEqkBQWXI6sHqwHiwG70TTBxGaiWwjCTGgOUgJiF1J8wMRAIUA34B4Q76HUBelAfJYSA0CuMIEaRP8wGIkGMA54bgQIMACAmkXJi0hKJQAAAABJRU5ErkJggg==) no-repeat 10px center;
+  text-decoration: none; }
+
+h1 tt, h1 code {
+  font-size: inherit; }
+
+h2 tt, h2 code {
+  font-size: inherit; }
+
+h3 tt, h3 code {
+  font-size: inherit; }
+
+h4 tt, h4 code {
+  font-size: inherit; }
+
+h5 tt, h5 code {
+  font-size: inherit; }
+
+h6 tt, h6 code {
+  font-size: inherit; }
+
+h1 {
+  font-size: 28px;
+  color: black; }
+
+h2 {
+  font-size: 24px;
+  border-bottom: 1px solid #cccccc;
+  color: black; }
+
+h3 {
+  font-size: 18px; }
+
+h4 {
+  font-size: 16px; }
+
+h5 {
+  font-size: 14px; }
+
+h6 {
+  color: #777777;
+  font-size: 14px; }
+
+p, blockquote, ul, ol, dl, li, table, pre {
+  margin: 15px 0; }
+
+hr {
+  background: transparent url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAYAAAAECAYAAACtBE5DAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNSBNYWNpbnRvc2giIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6OENDRjNBN0E2NTZBMTFFMEI3QjRBODM4NzJDMjlGNDgiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6OENDRjNBN0I2NTZBMTFFMEI3QjRBODM4NzJDMjlGNDgiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo4Q0NGM0E3ODY1NkExMUUwQjdCNEE4Mzg3MkMyOUY0OCIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo4Q0NGM0E3OTY1NkExMUUwQjdCNEE4Mzg3MkMyOUY0OCIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PqqezsUAAAAfSURBVHjaYmRABcYwBiM2QSA4y4hNEKYDQxAEAAIMAHNGAzhkPOlYAAAAAElFTkSuQmCC) repeat-x 0 0;
+  border: 0 none;
+  color: #cccccc;
+  height: 4px;
+  padding: 0;
+}
+
+body > h2:first-child {
+  margin-top: 0;
+  padding-top: 0; }
+body > h1:first-child {
+  margin-top: 0;
+  padding-top: 0; }
+  body > h1:first-child + h2 {
+    margin-top: 0;
+    padding-top: 0; }
+body > h3:first-child, body > h4:first-child, body > h5:first-child, body > h6:first-child {
+  margin-top: 0;
+  padding-top: 0; }
+
+a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
+  margin-top: 0;
+  padding-top: 0; }
+
+h1 p, h2 p, h3 p, h4 p, h5 p, h6 p {
+  margin-top: 0; }
+
+li p.first {
+  display: inline-block; }
+li {
+  margin: 0; }
+ul, ol {
+  padding-left: 30px; }
+
+ul :first-child, ol :first-child {
+  margin-top: 0; }
+
+dl {
+  padding: 0; }
+  dl dt {
+    font-size: 14px;
+    font-weight: bold;
+    font-style: italic;
+    padding: 0;
+    margin: 15px 0 5px; }
+    dl dt:first-child {
+      padding: 0; }
+    dl dt > :first-child {
+      margin-top: 0; }
+    dl dt > :last-child {
+      margin-bottom: 0; }
+  dl dd {
+    margin: 0 0 15px;
+    padding: 0 15px; }
+    dl dd > :first-child {
+      margin-top: 0; }
+    dl dd > :last-child {
+      margin-bottom: 0; }
+
+blockquote {
+  border-left: 4px solid #dddddd;
+  padding: 0 15px;
+  color: #777777; }
+  blockquote > :first-child {
+    margin-top: 0; }
+  blockquote > :last-child {
+    margin-bottom: 0; }
+
+table {
+  padding: 0;border-collapse: collapse; }
+  table tr {
+    border-top: 1px solid #cccccc;
+    background-color: white;
+    margin: 0;
+    padding: 0; }
+    table tr:nth-child(2n) {
+      background-color: #f8f8f8; }
+    table tr th {
+      font-weight: bold;
+      border: 1px solid #cccccc;
+      margin: 0;
+      padding: 6px 13px; }
+    table tr td {
+      border: 1px solid #cccccc;
+      margin: 0;
+      padding: 6px 13px; }
+    table tr th :first-child, table tr td :first-child {
+      margin-top: 0; }
+    table tr th :last-child, table tr td :last-child {
+      margin-bottom: 0; }
+
+img {
+  max-width: 100%; }
+
+span.frame {
+  display: block;
+  overflow: hidden; }
+  span.frame > span {
+    border: 1px solid #dddddd;
+    display: block;
+    float: left;
+    overflow: hidden;
+    margin: 13px 0 0;
+    padding: 7px;
+    width: auto; }
+  span.frame span img {
+    display: block;
+    float: left; }
+  span.frame span span {
+    clear: both;
+    color: #333333;
+    display: block;
+    padding: 5px 0 0; }
+span.align-center {
+  display: block;
+  overflow: hidden;
+  clear: both; }
+  span.align-center > span {
+    display: block;
+    overflow: hidden;
+    margin: 13px auto 0;
+    text-align: center; }
+  span.align-center span img {
+    margin: 0 auto;
+    text-align: center; }
+span.align-right {
+  display: block;
+  overflow: hidden;
+  clear: both; }
+  span.align-right > span {
+    display: block;
+    overflow: hidden;
+    margin: 13px 0 0;
+    text-align: right; }
+  span.align-right span img {
+    margin: 0;
+    text-align: right; }
+span.float-left {
+  display: block;
+  margin-right: 13px;
+  overflow: hidden;
+  float: left; }
+  span.float-left span {
+    margin: 13px 0 0; }
+span.float-right {
+  display: block;
+  margin-left: 13px;
+  overflow: hidden;
+  float: right; }
+  span.float-right > span {
+    display: block;
+    overflow: hidden;
+    margin: 13px auto 0;
+    text-align: right; }
+
+code, tt {
+  margin: 0 2px;
+  padding: 0 5px;
+  white-space: nowrap;
+  border: 1px solid #eaeaea;
+  background-color: #f8f8f8;
+  border-radius: 3px; }
+
+pre code {
+  margin: 0;
+  padding: 0;
+  white-space: pre;
+  border: none;
+  background: transparent; }
+
+.highlight pre {
+  background-color: #f8f8f8;
+  border: 1px solid #cccccc;
+  font-size: 13px;
+  line-height: 19px;
+  overflow: auto;
+  padding: 6px 10px;
+  border-radius: 3px; }
+
+pre {
+  background-color: #f8f8f8;
+  border: 1px solid #cccccc;
+  font-size: 13px;
+  line-height: 19px;
+  overflow: auto;
+  padding: 6px 10px;
+  border-radius: 3px; }
+  pre code, pre tt {
+    background-color: transparent;
+    border: none; }
+
+sup {
+    font-size: 0.83em;
+    vertical-align: super;
+    line-height: 0;
+}
+* {
+	-webkit-print-color-adjust: exact;
+}
+@media screen and (min-width: 914px) {
+    body {
+        width: 854px;
+        margin:0 auto;
+    }
+}
+@media print {
+	table, pre {
+		page-break-inside: avoid;
+	}
+	pre {
+		word-wrap: break-word;
+	}
+}
+</style>
+
+
+</head>
+
+<body>
+
+<h2 id="toc_0">tapable</h2>
+
+<p>Webpack 本质上是一种事件流的机制，它的工作流程就是将各个插件串联起来，而实现这一切的核心就是 tapable ，Webpack 中最核心的，负责编译的 Compiler 和负责创建 bundles 的 Compilation 都是 tapable 构造函数的实例。</p>
+
+<p>都是继承自Tapable</p>
+
+<div><pre><code class="language-none">class Compiler extends Tapable {
+    // ...
+}</code></pre></div>
+
+<p>webpack的灵魂Tapable，有点类似于nodejs的Events，都是注册一个事件，然后到了适当的时候触发。这里的事件触发是这样绑定触发的，通过on方法，绑定一个事件，emit方法出发一个事件。Tapable的机制和这类似，也是tap注册一个事件，然后call执行这个事件。</p>
+
+<div><pre><code class="language-none">const EventEmitter = require(&#39;events&#39;);
+const myEmitter = new EventEmitter();
+myEmitter.on(&#39;newListener&#39;, (param1,param2) =&gt; {
+    console.log(&quot;newListener&quot;,param1,param2)
+});
+myEmitter.emit(&#39;newListener&#39;, 1, 2);</code></pre></div>
+
+<ul>
+<li>想想ttm ~~~</li>
+</ul>
+
+<h3 id="toc_1">Tabable是什么</h3>
+
+<p>tapable库暴露了很多Hook（钩子）类，为插件提供挂载的钩子。</p>
+
+<div><pre><code class="language-none">const {
+    SyncHook,
+    SyncBailHook,
+    SyncWaterfallHook,
+    SyncLoopHook,
+    AsyncParallelHook,
+    AsyncParallelBailHook,
+    AsyncSeriesHook,
+    AsyncSeriesBailHook,
+    AsyncSeriesWaterfallHook
+ } = require(&quot;tapable&quot;);</code></pre></div>
+
+<ul>
+<li>tabpack提供了同步&amp;异步绑定钩子的方法，并且他们都有绑定事件和执行事件对应的方法。</li>
+</ul>
+
+<p>Async*                          Sync*
+绑定：tapAsync/tapPromise/tap   绑定：tap
+执行：callAsync/promise            执行：call</p>
+
+<p>*** Tabable的其他方法 *** 
+type    function<br>
+Hook    所有钩子的后缀<br>
+Waterfall   同步方法，但是它会传值给下一个函数<br>
+Bail    熔断：当函数有任何返回值，就会在当前执行函数停止<br>
+Loop    监听函数返回true表示继续循环，返回undefine表示结束循环<br>
+Sync    同步方法<br>
+AsyncSeries 异步串行钩子<br>
+AsyncParallel   异步并行执行钩子  </p>
+
+<h4 id="toc_2">用法：</h4>
+
+<div><pre><code class="language-none">const { SyncHook } = require(&#39;tapable&#39;);
+const mySyncHook = new SyncHook([&#39;name&#39;, &#39;age&#39;]);
+mySyncHook.tap(&#39;1&#39;, function (name, age) {
+    console.log(name, age, 1)
+    return &#39;wrong&#39; // 不关心返回值 这里写返回值对结果没有任何影响
+});
+
+mySyncHook.tap(&#39;2&#39;, function (name, age) {
+    console.log(name, age, 2)
+});
+
+mySyncHook.tap(&#39;3&#39;, function (name, age) {
+    console.log(name, age, 3)
+});
+
+mySyncHook.call(&#39;liushiyu&#39;, &#39;18&#39;);</code></pre></div>
+
+<ul>
+<li>tap接收两个参数，第一个参数是名称（没有任何意义）第二个参数是一个函数 接收一个参数.</li>
+</ul>
+
+<p>and ~~~~</p>
+
+<div><pre><code class="language-none">const {
+    SyncHook,
+    SyncBailHook,
+    SyncWaterfallHook,
+    SyncLoopHook,
+    AsyncParallelHook,
+    AsyncParallelBailHook,
+    AsyncSeriesHook,
+    AsyncSeriesBailHook,
+    AsyncSeriesWaterfallHook
+ } = require(&quot;tapable&quot;);
+const hook = new SyncHook([&quot;arg1&quot;, &quot;arg2&quot;, &quot;arg3&quot;]);
+//The best practice is to expose all hooks of a class in a hooks property:
+
+class Car {
+    constructor() {
+        this.hooks = {
+            accelerate: new SyncHook([&quot;newSpeed&quot;]),
+            brake: new SyncHook(),
+            calculateRoutes: new AsyncParallelHook([&quot;source&quot;, &quot;target&quot;, &quot;routesList&quot;])
+        };
+    }
+
+    /* ... */
+}
+//Other people can now use these hooks:
+
+const myCar = new Car();
+
+// Use the tap method to add a consument
+myCar.hooks.brake.tap(&quot;WarningLampPlugin&quot;, () =&gt;  {console.log(`it&#39;s work`)});
+
+myCar.hooks.brake.call()</code></pre></div>
+
+<h3 id="toc_3">流程</h3>
+
+<h3 id="toc_4">订阅</h3>
+
+<p>SyncHook.tap(&#39;xx&#39;) 
+（其中tap 继承自Hook）
+this.taps = [];
+-&gt; this._insert(options);</p>
+
+<h3 id="toc_5">发布</h3>
+
+<p>SyncHook.call<br>
+Hook.prototype 上的_call 方法。</p>
+
+<div><pre><code class="language-none">Object.defineProperties(Hook.prototype, {
+    _call: {
+        value: createCompileDelegate(&quot;call&quot;, &quot;sync&quot;),
+        configurable: true,
+        writable: true
+    },
+    
+});</code></pre></div>
+
+<p>createCompileDelegate -&gt; _createCall -&gt; HookCodeFactory -&gt;  create  返回fn 。然后执行封装过的工厂函数
+返回对应的的value。</p>
+
+<h4 id="toc_6">SyncHook</h4>
+
+<p>同步串行不关心订阅函数执行后的返回值是什么。其原理是将监听(订阅)的函数存放到一个数组中, 发布时遍历数组中的监听函数并且将发布时的 arguments传递给监听函数</p>
+
+<div><pre><code class="language-none">class SyncHook {
+  constructor(options) {
+    this.options = options
+    this.hooks = []  // 缓存订阅的事件
+  }
+
+  /**
+   * 订阅事件
+   * @param name
+   * @param callback
+   */
+  tap(name, callback) {
+    this.hooks.push(callback)
+  }
+
+  /**
+   * 发布事件
+   * @param args
+   */
+  call(...args) {
+    this.hooks.forEach(task =&gt; task(...args))
+  }
+}</code></pre></div>
+
+<h4 id="toc_7">SyncWaterfallHook</h4>
+
+<p>同步串行瀑布流, 瀑布流指的是第一个监听函数的返回值,做为第二个监听函数的参数。第二个函数的返回值作为第三个监听函数的参数,依次类推...</p>
+
+<div><pre><code class="language-none">const syncWaterfallHook = new SyncWaterfallHook(&#39;name&#39;)
+
+syncWaterfallHook.tap(&#39;name&#39;, data =&gt; {
+    console.log(&#39;name&#39;, data)
+    return 23
+})
+syncWaterfallHook.tap(&#39;age&#39;, data =&gt; {
+    console.log(&#39;age&#39;, data)
+})
+
+syncWaterfallHook.call(&#39;qiqingfu&#39;)</code></pre></div>
+
+<p>伪实现</p>
+
+<div><pre><code class="language-none">class SyncWaterfallHook {
+    constructor () {
+        this.hooks = [];
+    }
+    tap (name, fn) {
+        this.hooks.push(fn)
+    }
+    call () {
+        let result = null
+        for(let i=0; i&lt; this.hooks.length; i++) {
+            let hook = this.hooks[i];
+            if (!i) {
+                result = hook(...arguments)
+            } else {
+                result = hook(result)
+            }
+        }
+    }
+}</code></pre></div>
+
+<ul>
+<li>实际的比这个复杂一些。</li>
+<li>奠定了webpack插件体系的基础</li>
+<li>看明白这个就可以读webpack代码了</li>
+</ul>
+
+
+
+
+</body>
+
+</html>

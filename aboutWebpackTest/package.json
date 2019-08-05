@@ -1,0 +1,26 @@
+{
+  "name": "aboutwebpacktest",
+  "version": "1.0.0",
+  "description": "",
+  "main": "webpack.config.js",
+  "dependencies": {},
+  "devDependencies": {
+    "@babel/core": "^7.4.0",
+    "@babel/preset-env": "^7.4.2",
+    "babel-core": "^6.26.3",
+    "css-loader": "^2.1.1",
+    "html-webpack-plugin": "^3.2.0",
+    "loader-utils": "^1.2.3",
+    "mini-css-extract-plugin": "^0.5.0",
+    "style-loader": "^0.23.1",
+    "webpack": "^4.29.6",
+    "webpack-cli": "^3.3.0"
+  },
+  "scripts": {
+    "clean": "rimraf dist/*",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dist": "npm run clean & webpack"
+  },
+  "author": "",
+  "license": "ISC"
+}

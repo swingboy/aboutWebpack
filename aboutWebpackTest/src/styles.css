@@ -1,0 +1,5 @@
+@import './a.css';
+.test {
+    font-size: 14px;
+    color: red;
+}
